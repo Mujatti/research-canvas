@@ -1,0 +1,104 @@
+{
+  "acme-2026": {
+    "_meta": {
+      "customerName": "Acme Corp",
+      "createdBy": "sales@addsearch.com",
+      "createdAt": "2026-03-20",
+      "expiresAt": "2026-06-20",
+      "active": true,
+      "notes": "Q2 prospect demo for Acme documentation search"
+    },
+    "siteKey": "1bed1ffde465fddba2a53ad3ce69e6c2",
+    "initialQuery": "how to integrate search",
+    "answerProvider": "conversations",
+    "labels": {
+      "heroTitle": "Search across all Acme documentation.",
+      "heroSubtitle": "Powered by AI.",
+      "searchPlaceholder": "Search Acme docs...",
+      "searchButtonText": "Search Docs",
+      "aiAnswerLabel": "Acme AI Assistant",
+      "diveButtonText": "Explore Further →",
+      "followUpPlaceholder": "Ask Acme AI...",
+      "resetButtonText": "Start over",
+      "searchTabLabel": "Documentation",
+      "diveTabLabel": "Ask AI",
+      "footerBrand": "Acme Corp",
+      "footerBrandUrl": "https://www.acme-example.com/",
+      "footerTagline": "· Documentation Search"
+    },
+    "theme": {
+      "accentColor": "#7c3aed"
+    },
+    "filterOptions": {
+      "all": { "label": "All Docs", "filter": {}, "active": true },
+      "docs": { "label": "Technical Docs", "filter": { "category": "1xdocs" } },
+      "blog": { "label": "Blog", "filter": { "category": "1xblog" } }
+    },
+    "sortOptions": [
+      { "label": "Most Relevant", "sortBy": "relevance", "order": "desc", "active": true },
+      { "label": "Newest", "sortBy": "date", "order": "desc" }
+    ]
+  },
+
+  "bigretail-q1": {
+    "_meta": {
+      "customerName": "BigRetail Inc",
+      "createdBy": "sales@addsearch.com",
+      "createdAt": "2026-03-22",
+      "expiresAt": "2026-05-22",
+      "active": true,
+      "notes": "E-commerce product search demo"
+    },
+    "siteKey": "1bed1ffde465fddba2a53ad3ce69e6c2",
+    "answerProvider": "conversations",
+    "labels": {
+      "heroTitle": "Find the perfect product, instantly.",
+      "heroSubtitle": "AI-powered product search.",
+      "searchPlaceholder": "Search products or ask a question...",
+      "searchButtonText": "Find",
+      "aiAnswerLabel": "Product Expert",
+      "diveButtonText": "Ask More →",
+      "followUpPlaceholder": "Ask about sizes, colors, compatibility...",
+      "resetButtonText": "New search",
+      "relatedResultsLabel": "Similar Products",
+      "searchTabLabel": "Products",
+      "diveTabLabel": "Ask Expert",
+      "footerBrand": "BigRetail",
+      "footerBrandUrl": "https://www.bigretail-example.com/",
+      "footerTagline": "· Product Search"
+    },
+    "theme": {
+      "accentColor": "#2563eb"
+    },
+    "filterOptions": {
+      "all": { "label": "All Products", "filter": {}, "active": true },
+      "docs": { "label": "Help Center", "filter": { "category": "1xdocs" } },
+      "blog": { "label": "Reviews", "filter": { "category": "1xblog" } }
+    }
+  },
+
+  "stateuni-demo": {
+    "_meta": {
+      "customerName": "State University",
+      "createdBy": "sales@addsearch.com",
+      "createdAt": "2026-03-25",
+      "active": true
+    },
+    "siteKey": "1bed1ffde465fddba2a53ad3ce69e6c2",
+    "labels": {
+      "heroTitle": "Search courses, research, and campus resources.",
+      "heroSubtitle": "Your AI campus assistant.",
+      "searchPlaceholder": "What are you looking for?",
+      "aiAnswerLabel": "Campus AI",
+      "diveButtonText": "Learn More →",
+      "searchTabLabel": "Results",
+      "diveTabLabel": "Ask Campus AI",
+      "footerBrand": "State University",
+      "footerBrandUrl": "https://www.stateuni-example.edu/",
+      "footerTagline": "· Campus Search"
+    },
+    "theme": {
+      "accentColor": "#059669"
+    }
+  }
+}
