@@ -74,7 +74,7 @@ var DEFAULTS = {
   // All user-facing text. Override for branding or localization.
   labels: {
     heroTitle: 'Research Canvas for Evidence-Driven Teams.',
-    heroSubtitle: 'Search, pin evidence, compare signals, and build a structured point of view.'
+    heroSubtitle: 'Search, pin evidence, compare signals, and build a structured point of view.',
     searchPlaceholder: 'Ask a question or search by keyword...',
     searchButtonText: 'Search',
     headerSearchPlaceholder: 'Ask anything...',

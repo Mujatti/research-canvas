@@ -7,9 +7,18 @@ export function sanitizeStreamingMarkdown(md) {
   if (typeof md !== 'string') md = String(md);
   var out = md;
   if ((out.match(/```/g) || []).length % 2 === 1) out = out.replace(/```([^`]*)$/, '$1');
-  if ((out.match(/\*\*/g) || []).length % 2 === 1) { var i = out.lastIndexOf('**'); if (i >= 0) out = out.slice(0, i) + out.slice(i + 2); }
-  if ((out.match(/__/g) || []).length % 2 === 1) { var j = out.lastIndexOf('__'); if (j >= 0) out = out.slice(0, j) + out.slice(j + 2); }
-  if ((out.match(/`/g) || []).length % 2 === 1) { var k = out.lastIndexOf('`'); if (k >= 0) out = out.slice(0, k) + out.slice(k + 1); }
+  if ((out.match(/\*\*/g) || []).length % 2 === 1) {
+    var i = out.lastIndexOf('**');
+    if (i >= 0) out = out.slice(0, i) + out.slice(i + 2);
+  }
+  if ((out.match(/__/g) || []).length % 2 === 1) {
+    var j = out.lastIndexOf('__');
+    if (j >= 0) out = out.slice(0, j) + out.slice(j + 2);
+  }
+  if ((out.match(/`/g) || []).length % 2 === 1) {
+    var k = out.lastIndexOf('`');
+    if (k >= 0) out = out.slice(0, k) + out.slice(k + 1);
+  }
   return out;
 }
 
@@ -29,8 +38,9 @@ function markdownToHtml(md) {
 
   var html = md;
   html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  html = html.replace(/```(\w*)
-([\s\S]*?)```/g, function(_, lang, code) { return `<pre><code class="language-${lang}">${code.trim()}</code></pre>`; });
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, function (_, lang, code) {
+    return `<pre><code class="language-${lang}">${code.trim()}</code></pre>`;
+  });
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
   html = html.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
   html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
@@ -41,24 +51,24 @@ function markdownToHtml(md) {
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
   html = html.replace(/_(.+?)_/g, '<em>$1</em>');
   html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>
-?)+/g, function(match){ return `<ul>${match}</ul>`; });
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, function (match) {
+    return `<ul>${match}</ul>`;
+  });
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-  html = html.split(/
-
-+/).map(function(block) {
-    block = block.trim();
-    if (!block) return '';
-    if (/^<(h[1-6]|ul|ol|li|pre|blockquote|div|table)/.test(block)) return block;
-    return `<p>${block.replace(/
-/g, '<br/>')}</p>`;
-  }).join('
-');
+  html = html
+    .split(/\n\n+/)
+    .map(function (block) {
+      block = block.trim();
+      if (!block) return '';
+      if (/^<(h[1-6]|ul|ol|li|pre|blockquote|div|table)/.test(block)) return block;
+      return `<p>${block.replace(/\n/g, '<br/>')}</p>`;
+    })
+    .join('\n');
   return html;
 }
 
 export default function MarkdownRenderer({ content, className }) {
-  var html = useMemo(function(){ return markdownToHtml(content); }, [content]);
+  var html = useMemo(function () { return markdownToHtml(content); }, [content]);
   if (!content) return null;
   return <div className={`md-content ${className || ''}`} dangerouslySetInnerHTML={{ __html: html }} />;
 }
